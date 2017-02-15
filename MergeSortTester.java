@@ -1,3 +1,10 @@
+/*
+Team Honya- Allan Wang, Tim Wang, Gian Tricarico
+APCS2 PD4
+HW 07 What Does the Data Say?
+2017-2-14
+*/
+
 /*======================================
   class MergeSortTester
 
@@ -13,18 +20,22 @@
 
 
   BIG-OH CLASSIFICATION OF ALGORITHM:
-  <INSERT YOUR EXECUTION TIME CATEGORIZATION OF MERGESORT HERE>
+  
+  O(n * log(n))
 
   Mean execution times for dataset of size n:
   Batch size: <# of times each dataset size was run>
-  n=1       time:
-  n=10      time:
-  n=100     time:
+  n=1       time: 1
+  n=10      time: 40
+  n=100     time: 700
   ...
-  n=<huge>  time:
+  n=<huge>  time: n*log(n)
 
   ANALYSIS:
-  <INSERT YOUR RESULTS ANALYSIS HERE>
+  
+  The MergeSort Algorithm runs in O(n*log(n)). To analyze this we divide the algo into two halves. The first half of the algo divide the given array of length n into single-item array. We can relate this step to the BinarySearch algorithm where we also have an algo that, in its worst case, limit the bounds of the array by dividing by its midpoints until there's only 1 item left. Same as BinarySearch, the Big-Oh of the first half is O(log(n))
+  The second half deals with merging two sorted arrays into one. Here, the algo traverses the two arrays with two array counters, and by using a while loop, compares the two arrays' item at their counters. The while loop is O(n), and comparing is O(1), so this half is O(n).
+  So the whole MergeSort Algo has a runtime of O(n*log(n)).
   ======================================*/
 
 public class MergeSortTester
