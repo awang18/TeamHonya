@@ -20,7 +20,7 @@ HW 07 What Does the Data Say?
 
 
   BIG-OH CLASSIFICATION OF ALGORITHM:
-  
+
   O(n * log(n))
 
   Mean execution times for dataset of size n:
@@ -32,7 +32,7 @@ HW 07 What Does the Data Say?
   n=<huge>  time: n*log(n)
 
   ANALYSIS:
-  
+
   The MergeSort Algorithm runs in O(n*log(n)). To analyze this we divide the algo into two halves. The first half of the algo divide the given array of length n into single-item array. We can relate this step to the BinarySearch algorithm where we also have an algo that, in its worst case, limit the bounds of the array by dividing by its midpoints until there's only 1 item left. Same as BinarySearch, the Big-Oh of the first half is O(log(n))
   The second half deals with merging two sorted arrays into one. Here, the algo traverses the two arrays with two array counters, and by using a while loop, compares the two arrays' item at their counters. The while loop is O(n), and comparing is O(1), so this half is O(n).
   So the whole MergeSort Algo has a runtime of O(n*log(n)).
@@ -50,15 +50,20 @@ public class MergeSortTester
      ******************************/
     public static void main( String[] args )
     {
+      int[] arr0 = new int[1];
       int[] arr1 = new int[10];
       int[] arr2 = new int[100];
       int[] arr3 = new int[1000];
       int[] arr4 = new int[10000];
       int[] arr5 = new int[100000];
       int[] arr6 = new int[1000000];
+      int[] arr7 = new int[10000000];
+      int[] arr8 = new int[100000000];
 
-      long start, a, b, c, d, e, f, g;
+      long start, test, a, b, c, d, e, f, g, h;
       start = System.currentTimeMillis();
+      MergeSort.sort(arr0);
+      test = System.currentTimeMillis();
       MergeSort.sort(arr1);
       a = System.currentTimeMillis();
       MergeSort.sort(arr2);
@@ -71,14 +76,19 @@ public class MergeSortTester
       e = System.currentTimeMillis();
       MergeSort.sort(arr6);
       f = System.currentTimeMillis();
+      MergeSort.sort(arr7);
+      g = System.currentTimeMillis();
+  //    MergeSort.sort(arr8);
+  //    h = System.currentTimeMillis();
 
-      System.out.println("Array 1 took "+(a-start)+"mil to sort");
+      System.out.println("Array 1 took "+(a-test)+"mil to sort");
       System.out.println("Array 2 took "+(b-a)+"mil to sort");
       System.out.println("Array 3 took "+(c-b)+"mil to sort");
       System.out.println("Array 4 took "+(d-c)+"mil to sort");
       System.out.println("Array 5 took "+(e-d)+"mil to sort");
       System.out.println("Array 6 took "+(f-e)+"mil to sort");
-
+      System.out.println("Array 7 took "+(g-f)+"mil to sort");
+  //    System.out.println("Array 8 took "+(h-g)+"mil to sort");
 
     }//end main
 
