@@ -40,16 +40,55 @@ HW 07 What Does the Data Say?
 
 public class MergeSortTester
 {
+    public static double[] runTime(int length, int tries){
+      int[] arr = new int[length];
+      double[] times = new double[tries];
+      long startTime;
+      long endTime;
+      for (int i=0; i<tries; i++){
+        startTime = System.nanoTime();
+        MergeSort.sort(arr);
+        endTime = System.nanoTime();
+        times[i] = ((double)(endTime-startTime)) * Math.pow(10,-9);
+      }
+      return times;
+    }
+
+    public static double avgTime(int length, int tries){
+      double[] times = runTime(length,tries);
+      double total = 0;
+      //add totals of test length
+      for (int i=0; i<times.length; i++){
+        total += times[i];
+      }
+      //return average
+      return total / times.length;
+    }
+
+    //avg time for 100 tests
+    public static double avg(int length) {
+      return avgTime(length, 100);
+    }
+
 
     /******************************
      * execution time analysis
      Created a set of test case arrays with size 10* greater than
-     the previous array. Would record the System currentTimeMillis,
-     run the code, and check for the System currentTimeMillis afterwards,
-     then subtract before and after.
+     the previous array. For each, the mean of 1000 tests calculated
+     for an average execution time. Sort each array 1000 times, and
+     find the total time by calculating the difference between end and
+     start time for each. This is added up for a total and averaged.
      ******************************/
     public static void main( String[] args )
     {
+      int[] start = new int[100];
+      MergeSort.sort(start);
+      int[] testarrs = {1,10,100,1000,10000,100000,1000000};
+      for (int test: testarrs){
+        System.out.println(""+test+", "+ avg(test) +" seconds");
+      }
+
+      /*
       int[] arr0 = new int[1];
       int[] arr1 = new int[10];
       int[] arr2 = new int[100];
@@ -61,35 +100,35 @@ public class MergeSortTester
       int[] arr8 = new int[100000000];
 
       long start, test, a, b, c, d, e, f, g, h;
-      start = System.currentTimeMillis();
+      start = System.nanoTime();
       MergeSort.sort(arr0);
-      test = System.currentTimeMillis();
+      test = System.nanoTime();
       MergeSort.sort(arr1);
-      a = System.currentTimeMillis();
+      a = System.nanoTime();
       MergeSort.sort(arr2);
-      b = System.currentTimeMillis();
+      b = System.nanoTime();
       MergeSort.sort(arr3);
-      c = System.currentTimeMillis();
+      c = System.nanoTime();
       MergeSort.sort(arr4);
-      d = System.currentTimeMillis();
+      d = System.nanoTime();
       MergeSort.sort(arr5);
-      e = System.currentTimeMillis();
+      e = System.nanoTime();
       MergeSort.sort(arr6);
-      f = System.currentTimeMillis();
+      f = System.nanoTime();
       MergeSort.sort(arr7);
-      g = System.currentTimeMillis();
+      g = System.nanoTime();
   //    MergeSort.sort(arr8);
   //    h = System.currentTimeMillis();
 
-      System.out.println("Array 1 took "+(a-test)+"mil to sort");
-      System.out.println("Array 2 took "+(b-a)+"mil to sort");
-      System.out.println("Array 3 took "+(c-b)+"mil to sort");
-      System.out.println("Array 4 took "+(d-c)+"mil to sort");
-      System.out.println("Array 5 took "+(e-d)+"mil to sort");
-      System.out.println("Array 6 took "+(f-e)+"mil to sort");
-      System.out.println("Array 7 took "+(g-f)+"mil to sort");
+      System.out.println("Array 1 took "+(a-test)*Math.pow(10,-9)+"seconds to sort");
+      System.out.println("Array 2 took "+(b-a)*Math.pow(10,-9)+"seconds to sort");
+      System.out.println("Array 3 took "+(c-b)*Math.pow(10,-9)+"seconds to sort");
+      System.out.println("Array 4 took "+(d-c)*Math.pow(10,-9)+"seconds to sort");
+      System.out.println("Array 5 took "+(e-d)*Math.pow(10,-9)+"seconds to sort");
+      System.out.println("Array 6 took "+(f-e)*Math.pow(10,-9)+"seconds to sort");
+      System.out.println("Array 7 took "+(g-f)*Math.pow(10,-9)+"seconds to sort");
   //    System.out.println("Array 8 took "+(h-g)+"mil to sort");
-
+*/
     }//end main
 
 }//end class
