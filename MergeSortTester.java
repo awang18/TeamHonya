@@ -67,7 +67,7 @@ public class MergeSortTester
 
     //avg time for 100 tests
     public static double avg(int length) {
-      return avgTime(length, 100);
+      return avgTime(length, 10);
     }
 
 
@@ -83,7 +83,7 @@ public class MergeSortTester
     {
       int[] start = new int[100];
       MergeSort.sort(start);
-      int[] testarrs = {1,10,100,1000,10000,100000,1000000};
+      int[] testarrs = {1,10,100,1000,10000,100000,1000000,10000000, 100000000};
       for (int test: testarrs){
         System.out.println(""+test+", "+ avg(test) +" seconds");
       }
